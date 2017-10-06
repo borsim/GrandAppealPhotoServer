@@ -42,7 +42,7 @@ try to be as clear as possible! Being brief and clear is the most important fact
 If the code is a-ok and beautiful, give it an Approved review.
 Once it's been approved, the branch can then be merged. This will be a button on the Pull Request web page.
 
-This branch has now served its purpose. On your local computer you should do `` git branch -d yourname-whatyourefixing `` to get 
+This branch has now served its purpose. On your local computer you should do `` git branch -d yourname-whatyourefixing `` to 
 get rid of that already merged branch to reduce clutter.
 
 ### Some other useful commands:
