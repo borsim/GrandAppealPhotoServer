@@ -61,7 +61,7 @@ Put words between a pair of stars to make them *italic*
 
 Put words between a pair of two stars to make them **bold**
 
-Put words between a pair of tildes to make them ~~strikethrough~~
+Put words between a pair of two tildes to make them ~~strikethrough~~
 
 Put words between a pair of backticks to make them inline `code`
 
