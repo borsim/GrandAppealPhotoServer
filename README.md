@@ -4,8 +4,8 @@ Software Product Engineering at the University of Bristol, project #30
 Hello everyone!
 I'm Miki, the team leader and this is my Git process guide!
 
-We will list development tasks as well as errors and all other concerns logged as Issues
-- however minor the thing just open an *Issue* for it! It's not a problem to have many and they are easy to track.
+We will list development tasks as well as errors and all other concerns logged as Issues;
+however minor the thing just open an **Issue** for it! It's not a problem to have many and they are easy to track.
 I recommend using git in the terminal, commands will be listed as in that environment.
 
 We will always keep a working version as the "master" branch of the repository. 
@@ -23,7 +23,7 @@ This helps you go back to a point if something unfixable comes up and you need t
 
 Once your think the code is working, understandable and stable, push it up on the online repository (this!).
 Use `` git push origin yourname-whatyourefixing `` to push your current branch up to the "origin", which is this thing on GitHub.
-Then open up your web browser and go to *Pull requests* and open a new pull request.
+Then open up your web browser and go to **Pull requests** and open a new pull request.
 Write a brief description of what the pull request does. 
 If you write "Closes #176" then once the pull request is accepted and merged the relevant Issue will automatically be closed!
 If your pull request resolves multiple Issues, you have to put each Closes#123 in a separate line.
@@ -52,4 +52,8 @@ To get the repo on your local computer, do:
 `` git clone https://github.com/borsim/GrandAppealPhotoServer.git ``
 (also usable if everything goes FUBAR and you just want the working version again)
 
-GitHub supports Markdown formatting so if you want your reviews to be **fancy**, keep these in mind:
+GitHub supports Markdown formatting so if you want your reviews to be **fancy**, try these!
+Put words between a pair of stars to make them *italic*
+Put words between a pair of two stars to make them **bold**
+Put words between a pair of backticks to make them `code`
+Put words between a pair of three backticks to make them ```a separate line of code!```
