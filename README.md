@@ -19,6 +19,8 @@ This is not super-crucial but can prevent problems down the line so I do recomme
 
 Select an issue and before you start working, do `` git branch yourname-whatyourefixing `` to create a new branch
 to work on and make it easily identifiable later.
+**You also need to switch to the new branch!**
+Use `git checkout yourname-whatyourefixing`
 
 Do your work and make regular commits with `` git commit -am "This message describes what I modified" `` to save your progress.
 This helps you go back to a point if something unfixable comes up and you need to redo everything. 
