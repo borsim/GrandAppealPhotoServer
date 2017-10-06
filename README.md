@@ -4,7 +4,7 @@
 ## Hello everyone!
 **I'm Miki, the team leader and this is my Git process guide!**
 
-We will list development tasks as well as errors and all other concerns logged as Issues;
+We will list development tasks as well as errors and all other concerns logged as **Issues**;
 however minor the thing just open an **Issue** for it! It's not a problem to have many and they are easy to track.
 I recommend using git in the terminal, commands will be listed as in that environment.
 
