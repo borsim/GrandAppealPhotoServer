@@ -4,6 +4,8 @@
 ## Hello everyone!
 **I'm Miki, the team leader and this is my Git process guide!**
 
+### The Git process
+
 We will list development tasks as well as errors and all other concerns logged as **Issues**;
 however minor the thing just open an **Issue** for it! It's not a problem to have many and they are easy to track.
 I recommend using git in the terminal, commands will be listed as in that environment.
@@ -41,7 +43,7 @@ Once it's been approved, the branch can then be merged. This will be a button on
 This branch has now served its purpose. On your local computer you should do `` git branch -d yourname-whatyourefixing `` to get 
 get rid of that already merged branch to reduce clutter.
 
-Some other useful commands:
+### Some other useful commands:
 If you mess up some changes and want to just jump back to your previous commit to check something, do
 `` git stash ``    - this will store all changes since the last commit and put you back to it. If you stash again, it will jump 
 back another commit.
@@ -52,19 +54,28 @@ To get the repo on your local computer, do:
 `` git clone https://github.com/borsim/GrandAppealPhotoServer.git ``
 (also usable if everything goes FUBAR and you just want the working version again)
 
+### Fancy reviews
 GitHub supports Markdown formatting so if you want your reviews to be **fancy**, try these!
+
 Put words between a pair of stars to make them *italic*
+
 Put words between a pair of two stars to make them **bold**
+
 Put words between a pair of tildes to make them ~~strikethrough~~
+
 Put words between a pair of backticks to make them inline `code`
+
 Put a code block between a pair of three backticks to make it an actual code block
-``` class Gromit (int episode) {
+
+```
+class Gromit (int episode) {
   private boolean watched = false;
   //... other code
 } 
 ```
-Put hashtags and a space in front of them (at the beginning of a line) to make them increasingly larger 
+Put hashtags and a space in front of them (at the beginning of a line) to make them
 # Headers
 ## Headers
 ### Headers
 
+Just check the formatting of this README if you don't know how I did these.
