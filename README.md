@@ -12,17 +12,17 @@ We will always keep a working version as the "master" branch of the repository.
 You should **NEVER EVER work on the master branch, nor write to it**. I don't know how to set up the right guards
 so there will be no software message popping up. Just please keep it in mind :) .
 
-Before you start working on an issue, do a ` git pull ` to update your local environment to the current version.
+Before you start working on an issue, do a `` git pull `` to update your local environment to the current version.
 This is not super-crucial but can prevent problems down the line so I do recommend doing it.
 
-Select an issue and before you start working, do ` git branch yourname-whatyourefixing ` to create a new branch
+Select an issue and before you start working, do `` git branch yourname-whatyourefixing `` to create a new branch
 to work on and make it easily identifiable later.
 
-Do your work and make regular commits with ` git commit -am "This message describes what I modified" ` to save your progress.
+Do your work and make regular commits with `` git commit -am "This message describes what I modified" `` to save your progress.
 This helps you go back to a point if something unfixable comes up and you need to redo everything. 
 
 Once your think the code is working, understandable and stable, push it up on the online repository (this!).
-Use ` git push origin yourname-whatyourefixing ` to push your current branch up to the "origin", which is this thing on GitHub.
+Use `` git push origin yourname-whatyourefixing `` to push your current branch up to the "origin", which is this thing on GitHub.
 Then open up your web browser and go to *Pull requests* and open a new pull request.
 Write a brief description of what the pull request does. 
 If you write "Closes #176" then once the pull request is accepted and merged the relevant Issue will automatically be closed!
@@ -38,17 +38,18 @@ try to be as clear as possible! Being brief and clear is the most important fact
 If the code is a-ok and beautiful, give it an Approved review.
 Once it's been approved, the branch can then be merged. This will be a button on the Pull Request web page.
 
-This branch has now served its purpose. On your local computer you should do ` git branch -d yourname-whatyourefixing ` to get 
+This branch has now served its purpose. On your local computer you should do `` git branch -d yourname-whatyourefixing `` to get 
 get rid of that already merged branch to reduce clutter.
 
 Some other useful commands:
 If you mess up some changes and want to just jump back to your previous commit to check something, do
-` git stash `    - this will store all changes since the last commit and put you back to it. If you stash again, it will jump 
+`` git stash ``    - this will store all changes since the last commit and put you back to it. If you stash again, it will jump 
 back another commit.
-` git stash list ` will list all the stashes you have
-` git stash apply 5 ` will apply the stashed changes at index 5 (take note that this is 0-indexed. If you don't give it a number,
+`` git stash list `` will list all the stashes you have
+`` git stash apply 5 `` will apply the stashed changes at index 5 (take note that this is 0-indexed. If you don't give it a number,
 
 To get the repo on your local computer, do:
-` git clone https://github.com/borsim/GrandAppealPhotoServer.git `
+`` git clone https://github.com/borsim/GrandAppealPhotoServer.git ``
 (also usable if everything goes FUBAR and you just want the working version again)
 
+GitHub supports Markdown formatting so if you want your reviews to be **fancy**, keep these in mind:
