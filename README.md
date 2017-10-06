@@ -1,8 +1,8 @@
-# GrandAppealPhotoServer
-Software Product Engineering at the University of Bristol, project #30
+### GrandAppealPhotoServer
+##Software Product Engineering at the University of Bristol, project #30
 
-Hello everyone!
-I'm Miki, the team leader and this is my Git process guide!
+##Hello everyone!
+#I'm Miki, the team leader and this is my Git process guide!
 
 We will list development tasks as well as errors and all other concerns logged as Issues;
 however minor the thing just open an **Issue** for it! It's not a problem to have many and they are easy to track.
@@ -46,7 +46,7 @@ If you mess up some changes and want to just jump back to your previous commit t
 `` git stash ``    - this will store all changes since the last commit and put you back to it. If you stash again, it will jump 
 back another commit.
 `` git stash list `` will list all the stashes you have
-`` git stash apply 5 `` will apply the stashed changes at index 5 (take note that this is 0-indexed. If you don't give it a number,
+`` git stash apply 5 `` will apply the stashed changes at index 5 (take note that this is 0-indexed. If you don't give it a number, it will apply #0.
 
 To get the repo on your local computer, do:
 `` git clone https://github.com/borsim/GrandAppealPhotoServer.git ``
@@ -55,5 +55,16 @@ To get the repo on your local computer, do:
 GitHub supports Markdown formatting so if you want your reviews to be **fancy**, try these!
 Put words between a pair of stars to make them *italic*
 Put words between a pair of two stars to make them **bold**
-Put words between a pair of backticks to make them `code`
-Put words between a pair of three backticks to make them ```a separate line of code!```
+Put words between a pair of tildes to make them ~~strikethrough~~
+Put words between a pair of backticks to make them inline `code`
+Put a code block between a pair of three backticks to make it an actual code block
+``` class Gromit (int episode) {
+  private boolean watched = false;
+  //... other code
+} 
+```
+Put hashtags and a space in front of them (at the beginning of a line) to make them increasingly larger 
+# Headers
+## Headers
+### Headers
+
