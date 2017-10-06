@@ -1,8 +1,8 @@
 ### GrandAppealPhotoServer
-##Software Product Engineering at the University of Bristol, project #30
+## Software Product Engineering at the University of Bristol, project #30
 
-##Hello everyone!
-#I'm Miki, the team leader and this is my Git process guide!
+## Hello everyone!
+# I'm Miki, the team leader and this is my Git process guide!
 
 We will list development tasks as well as errors and all other concerns logged as Issues;
 however minor the thing just open an **Issue** for it! It's not a problem to have many and they are easy to track.
