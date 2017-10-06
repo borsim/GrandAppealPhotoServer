@@ -46,6 +46,7 @@ This branch has now served its purpose. On your local computer you should do `` 
 get rid of that already merged branch to reduce clutter.
 
 ### Some other useful commands:
+`git branch` (without any other arguments) will list the different branches you have on your local computer.
 If you mess up some changes and want to just jump back to your previous commit to check something, do
 `` git stash ``    - this will store all changes since the last commit and put you back to it. If you stash again, it will jump 
 back another commit.
