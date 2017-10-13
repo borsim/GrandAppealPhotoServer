@@ -24,6 +24,8 @@ Use `git checkout yourname-whatyourefixing`
 
 Do your work and make regular commits with `` git commit -am "This message describes what I modified" `` to save your progress.
 This helps you go back to a point if something unfixable comes up and you need to redo everything. 
+If you make a new file, use `` git add filename.abc `` to add it to the tracker.
+Frequently use `` git status `` and if you forgot what changes you made to a file since the last commit, `` git diff filename.abc ``. 
 
 Once your think the code is working, understandable and stable, push it up on the online repository (this!).
 Use `` git push origin yourname-whatyourefixing `` to push your current branch up to the "origin", which is this thing on GitHub.
