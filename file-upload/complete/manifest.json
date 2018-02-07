@@ -2,7 +2,7 @@
     "runtime": {
         "majorVersion": "8"
     },
-    "command": "java -jar upload-service-1.0-SNAPSHOT.jar",
+    "command": "java -jar gs-uploading-files-0.1.0.jar",
     "release": {
         "build": "150520.1154",
         "commit": "d8c2596364d9584050461",
