@@ -30,7 +30,8 @@ public abstract class StreamImageData extends AbstractImageData {
     }
 
     /**
-     * Move the current data pointer into given position;
+     * Move the current data pointer to given position;
+     * @param index
      */
     protected abstract void changePosition(int index) throws IOException;
 
