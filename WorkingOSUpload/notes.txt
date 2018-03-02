@@ -1,0 +1,17 @@
+NOTE:- this will not work on you computer immediately.
+
+To get it to work you will need to set up a config file and and RSA key pair.
+How to do this:
+getting keypair - https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#How
+making config file - https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm
+
+---
+
+Currently I am hard coding the name of the image I wanna upload.
+We will have to change this so that it is automated.
+
+Additonally I am hard coding the name of the file as it will be in the OS.
+If you upload a different image with this name it will override.
+We will also have to incrememnt some sort of naming/numbering.
+(maybe if the API for the app autonumbers them, just steal the original name?)
+

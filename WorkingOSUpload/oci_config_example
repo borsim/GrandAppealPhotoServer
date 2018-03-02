@@ -1,0 +1,7 @@
+[DEFAULT]
+user=ocid1.user...
+fingerprint=
+key_file=
+pass_phrase=
+tenancy=ocid1.tenancy...
+region=eu-frankfurt-1
