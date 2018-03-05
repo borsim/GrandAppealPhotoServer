@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hello.storage.StorageFileNotFoundException;
 import hello.storage.StorageService;
+import hello.objectStorage.src.*;
 
 @Controller
 public class FileUploadController {
@@ -54,11 +55,15 @@ public class FileUploadController {
 
     @PostMapping("/")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
-            RedirectAttributes redirectAttributes) {
+            RedirectAttributes redirectAttributes) throws IOException {
 
         storageService.store(file);
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
+        
+        // calling Sam's object storage
+        TestObjectStorage objectStorage = new TestObjectStorage();
+        objectStorage.upload(file.getOriginalFilename());
 
         return "redirect:/";
     }
