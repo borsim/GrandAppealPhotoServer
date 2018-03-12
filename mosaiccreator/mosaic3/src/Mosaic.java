@@ -13,21 +13,36 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.imageio.ImageIO;
 
-public class Mosaic {
-    private static final String TILES_DIR = "tiles4";
-    private static final String INPUT_IMG = "in4.jpg";
-    private static final String OUTPUT_IMG = "output5.png";
-    private static final int TILE_WIDTH = 32;
-    private static final int TILE_HEIGHT = 24;
-    private static final int TILE_SCALE = 8;
-    private static final boolean IS_BW = false;
-    private static final int THREADS = 2;
+public class Mosaic implements Runnable {
 
-    private static void log(String msg){
+    private int IMG_COUNT;
+    private String TILES_DIR;
+    private String INPUT_IMG;
+    private String OUTPUT_IMG;
+    private int TILE_WIDTH;
+    private int TILE_HEIGHT;
+    private int TILE_SCALE;
+    private boolean IS_BW;
+    private int THREADS;
+    private ArrayList<Tile> reuseQueue = new ArrayList<Tile>();
+    private final MAX_QUEUE_SIZE = 6;
+
+    public Mosaic (String tilesDir, String inputImg, String outputImg, int tileWidth, int tileHeight, int tileScale, boolean isBW, int threads) {
+        TILES_DIR = tilesDir;
+        INPUT_IMG = inputImg;
+        OUTPUT_IMG = outputImg;
+        TILE_WIDTH = tileWidth;
+        TILE_HEIGHT = tileHeight;
+        TILE_SCALE = tileScale;
+        IS_BW = isBW;
+        THREADS = threads;
+    }
+
+    private void log(String msg){
         System.out.println(msg);
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException{
+    public void run(String[] args) throws IOException, InterruptedException{
         log("Reading tiles...");
         final Collection<Tile> tileImages = getImagesFromTiles(new File(TILES_DIR));
 
@@ -62,7 +77,7 @@ public class Mosaic {
         log("FINISHED");
     }
 
-    private static BufferedImage makeOutputImage(int width, int height, Collection<BufferedImagePart> parts){
+    private BufferedImage makeOutputImage(int width, int height, Collection<BufferedImagePart> parts){
         BufferedImage image = new BufferedImage(width * TILE_SCALE, height * TILE_SCALE, BufferedImage.TYPE_3BYTE_BGR);
 
         for(BufferedImagePart part : parts){
@@ -73,7 +88,7 @@ public class Mosaic {
         return image;
     }
 
-    private static Tile getBestFitTile(BufferedImage target, Collection<Tile> tiles) {
+    private Tile getBestFitTile(BufferedImage target, Collection<Tile> tiles) {
         Tile bestFit = null;
         int bestFitScore = -1;
 
@@ -84,11 +99,12 @@ public class Mosaic {
                 bestFit = tile;
             }
         }
-
+        reuseQueue.add(0, bestFit);
+        if (reuseQueue.size >= MAX_QUEUE_SIZE) reuseQueue.removeLast();
         return bestFit;
     }
 
-    private static int getScore(BufferedImage target, Tile tile){
+    private int getScore(BufferedImage target, Tile tile){
         assert target.getHeight() == Tile.SCALED_HEIGHT;
         assert target.getWidth() == Tile.SCALED_WIDTH;
 
@@ -108,11 +124,15 @@ public class Mosaic {
                 total += score;
             }
         }
-
+        int i = 0;
+        while (i < reuseQueue.size()) {
+            if (reuseQueue[i] == tile) total = 0;
+            i += 1;
+        }
         return total;
     }
 
-    private static int getDiff(int target, Pixel candidate){
+    private int getDiff(int target, Pixel candidate){
         if (IS_BW){
             return Math.abs(getRed(target) - candidate.r);
         } else {
@@ -122,25 +142,26 @@ public class Mosaic {
         }
     }
 
-    private static int getRed(int pixel){
+    private int getRed(int pixel){
         return  (pixel >>> 16) & 0xff;
     }
 
-    private static int getGreen(int pixel){
+    private int getGreen(int pixel){
         return  (pixel >>> 8) & 0xff;
     }
 
-    private static int getBlue(int pixel){
+    private int getBlue(int pixel){
         return  pixel & 0xff;
     }
 
-    private static Collection<Tile> getImagesFromTiles(File tilesDir) throws IOException{
+    private Collection<Tile> getImagesFromTiles(File tilesDir) throws IOException{
         Collection<Tile> tileImages = Collections.synchronizedSet(new HashSet<Tile>());
         File[] files = tilesDir.listFiles();
         for(File file : files){
             BufferedImage img = ImageIO.read(file);
             if (img != null){
                 tileImages.add(new Tile(img));
+                IMG_COUNT += 1;
             } else {
                 System.err.println("null image for file " + file.getName());
             }
@@ -148,7 +169,7 @@ public class Mosaic {
         return tileImages;
     }
 
-    private static Collection<BufferedImagePart> getImagesFromInput(File inputImgFile) throws IOException{
+    private Collection<BufferedImagePart> getImagesFromInput(File inputImgFile) throws IOException{
         Collection<BufferedImagePart> parts = new HashSet<BufferedImagePart>();
 
         BufferedImage inputImage = ImageIO.read(inputImgFile);
@@ -169,9 +190,9 @@ public class Mosaic {
         return parts;
     }
 
-    public static class Tile {
-        public static int SCALED_WIDTH = TILE_WIDTH / TILE_SCALE;
-        public static int SCALED_HEIGHT = TILE_HEIGHT / TILE_SCALE;
+    public class Tile {
+        public int SCALED_WIDTH = TILE_WIDTH / TILE_SCALE;
+        public int SCALED_HEIGHT = TILE_HEIGHT / TILE_SCALE;
         public Pixel[][] pixels = new Pixel[SCALED_WIDTH][SCALED_HEIGHT];
         public BufferedImage image;
 
@@ -204,7 +225,7 @@ public class Mosaic {
         }
     }
 
-    public static class BufferedImagePart{
+    public class BufferedImagePart{
         public BufferedImagePart(BufferedImage image, int x, int y) {
             this.image = image;
             this.x = x;
@@ -216,7 +237,7 @@ public class Mosaic {
         public int y;
     }
 
-    public static class Pixel{
+    public class Pixel{
         public int r,g,b;
 
         public Pixel(int r, int g, int b) {
