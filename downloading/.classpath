@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="examples"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/oci-java-sdk-full-1.2.27-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/oci-java-sdk-full-1.2.27-sources.jar"/>
+	<classpathentry kind="lib" path="lib/oci-java-sdk-full-1.2.27.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-nop-1.7.25.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
