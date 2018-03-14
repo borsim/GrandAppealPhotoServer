@@ -47,6 +47,28 @@ public class Mosaic implements Runnable {
         System.out.println(msg);
     }
 
+    public void resizeAndCropImage(String filename) throws IOException {
+        Runtime rt = Runtime.getRuntime();
+        BufferedImage currentImage = ImageIO.read(new File(filename));
+        int currentWidth           = currentImage.getWidth();
+        int currentHeight          = currentImage.getHeight();
+        Double ratioWidth  = currentWidth / 4.0;
+        Double ratioHeight = currentHeight / 3.0;
+        Double cropHeight;
+        Double cropWidth;
+        // TODO crop from the middle instead of top left corner
+        if (ratioWidth >= ratioHeight) { // Limiting dimension: height
+            cropHeight = Math.floor(ratioHeight) * 3;
+            cropWidth  = Math.floor(ratioHeight) * 4;
+        } else {                         // Limiting dimension: width
+            cropHeight = Math.floor(ratioWidth) * 3;
+            cropWidth  = Math.floor(ratioWidth) * 4;
+        }
+        Process pr = rt.exec("convert " + filename + " -crop " + Integer.toString(cropWidth.intValue()) + "x" + Integer.toString(cropHeight.intValue()) +
+         " /croppedImages/" + filename);
+        Process rsz = rt.exec("convert /croppedImages/" + filename + "-resize 320x240 /readyImages/" + filename);
+
+    }
     public void run() {
         log("Reading tiles...");
         try {
