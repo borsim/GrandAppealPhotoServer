@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,7 +26,9 @@ public class Mosaic implements Runnable {
     private boolean IS_BW;
     private int THREADS;
     private ArrayList<Tile> reuseQueue = new ArrayList<Tile>();
-    private final MAX_QUEUE_SIZE = 6;
+    private final int MAX_QUEUE_SIZE = 6;
+    private int SCALED_WIDTH;
+    private int SCALED_HEIGHT;
 
     public Mosaic (String tilesDir, String inputImg, String outputImg, int tileWidth, int tileHeight, int tileScale, boolean isBW, int threads) {
         TILES_DIR = tilesDir;
@@ -36,45 +39,52 @@ public class Mosaic implements Runnable {
         TILE_SCALE = tileScale;
         IS_BW = isBW;
         THREADS = threads;
+        SCALED_WIDTH = TILE_WIDTH / TILE_SCALE;
+        SCALED_HEIGHT = TILE_HEIGHT / TILE_SCALE;
     }
 
     private void log(String msg){
         System.out.println(msg);
     }
 
-    public void run(String[] args) throws IOException, InterruptedException{
+    public void run() {
         log("Reading tiles...");
-        final Collection<Tile> tileImages = getImagesFromTiles(new File(TILES_DIR));
+        try {
+            final Collection<Tile> tileImages = getImagesFromTiles(new File(TILES_DIR));
 
-        log("Processing input image...");
-        File inputImageFile = new File(INPUT_IMG);
-        Collection<BufferedImagePart> inputImageParts = getImagesFromInput(inputImageFile);
-        final Collection<BufferedImagePart> outputImageParts = Collections.synchronizedSet(new HashSet<BufferedImagePart>());
+            log("Processing input image...");
+            File inputImageFile = new File(INPUT_IMG);
+            Collection<BufferedImagePart> inputImageParts = getImagesFromInput(inputImageFile);
+            final Collection<BufferedImagePart> outputImageParts = Collections.synchronizedSet(new HashSet<BufferedImagePart>());
 
-        ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(THREADS);
+            ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(THREADS);
 
-        final AtomicInteger i = new AtomicInteger();
-        final int partCount = inputImageParts.size();
-        for (final BufferedImagePart inputImagePart : inputImageParts) {
-            newFixedThreadPool.execute(new Runnable(){
-                public void run() {
-                    Tile bestFitTile = getBestFitTile(inputImagePart.image, tileImages);
-                    log(String.format("Matching part %s of %s", i.incrementAndGet(), partCount));
-                    outputImageParts.add(new BufferedImagePart(bestFitTile.image, inputImagePart.x, inputImagePart.y));
-                }
-            });
+            final AtomicInteger i = new AtomicInteger();
+            final int partCount = inputImageParts.size();
+            for (final BufferedImagePart inputImagePart : inputImageParts) {
+                newFixedThreadPool.execute(new Runnable(){
+                    public void run() {
+                        Tile bestFitTile = getBestFitTile(inputImagePart.image, tileImages);
+                        log(String.format("Matching part %s of %s", i.incrementAndGet(), partCount));
+                        outputImageParts.add(new BufferedImagePart(bestFitTile.image, inputImagePart.x, inputImagePart.y));
+                    }
+                });
+            } 
+            newFixedThreadPool.shutdown();
+            newFixedThreadPool.awaitTermination(10000000, TimeUnit.SECONDS);
+
+            log("Writing output image...");
+            BufferedImage inputImage = ImageIO.read(inputImageFile);
+            int width = inputImage.getWidth();
+            int height = inputImage.getHeight();
+            BufferedImage output = makeOutputImage(width, height, outputImageParts);
+            ImageIO.write(output, "png", new File(OUTPUT_IMG));
+            log("FINISHED");
+        } catch (IOException e) {
+            log("IOException encountered, collage cannot be generated");
+        } catch (InterruptedException e ) {
+            log ("InterruptedException encountered, collage cannot be generated");
         }
-
-        newFixedThreadPool.shutdown();
-        newFixedThreadPool.awaitTermination(10000000, TimeUnit.SECONDS);
-
-        log("Writing output image...");
-        BufferedImage inputImage = ImageIO.read(inputImageFile);
-        int width = inputImage.getWidth();
-        int height = inputImage.getHeight();
-        BufferedImage output = makeOutputImage(width, height, outputImageParts);
-        ImageIO.write(output, "png", new File(OUTPUT_IMG));
-        log("FINISHED");
     }
 
     private BufferedImage makeOutputImage(int width, int height, Collection<BufferedImagePart> parts){
@@ -100,17 +110,17 @@ public class Mosaic implements Runnable {
             }
         }
         reuseQueue.add(0, bestFit);
-        if (reuseQueue.size >= MAX_QUEUE_SIZE) reuseQueue.removeLast();
+        if (reuseQueue.size() >= MAX_QUEUE_SIZE) reuseQueue.remove(reuseQueue.size() - 1);
         return bestFit;
     }
 
     private int getScore(BufferedImage target, Tile tile){
-        assert target.getHeight() == Tile.SCALED_HEIGHT;
-        assert target.getWidth() == Tile.SCALED_WIDTH;
+        assert target.getHeight() == SCALED_HEIGHT;
+        assert target.getWidth() == SCALED_WIDTH;
 
         int total = 0;
-        for(int x = 0; x<Tile.SCALED_WIDTH; x++){
-            for(int y = 0; y<Tile.SCALED_HEIGHT; y++){
+        for(int x = 0; x<SCALED_WIDTH; x++){
+            for(int y = 0; y<SCALED_HEIGHT; y++){
                 int targetPixel = target.getRGB(x, y);
                 Pixel candidatePixel = tile.pixels[x][y];
                 int diff = getDiff(targetPixel, candidatePixel);
@@ -124,10 +134,8 @@ public class Mosaic implements Runnable {
                 total += score;
             }
         }
-        int i = 0;
-        while (i < reuseQueue.size()) {
-            if (reuseQueue[i] == tile) total = 0;
-            i += 1;
+        for (Tile currentTile: reuseQueue) {
+            if (currentTile == tile) total = 0;
         }
         return total;
     }
@@ -176,7 +184,7 @@ public class Mosaic implements Runnable {
         int totalHeight = inputImage.getHeight();
         int totalWidth = inputImage.getWidth();
 
-        int x=0, y=0, w=Tile.SCALED_WIDTH, h=Tile.SCALED_HEIGHT;
+        int x=0, y=0, w=SCALED_WIDTH, h=SCALED_HEIGHT;
         while(x+w <= totalWidth){
             while(y+h <= totalHeight){
                 BufferedImage inputImagePart = inputImage.getSubimage(x, y, w, h);
@@ -191,8 +199,6 @@ public class Mosaic implements Runnable {
     }
 
     public class Tile {
-        public int SCALED_WIDTH = TILE_WIDTH / TILE_SCALE;
-        public int SCALED_HEIGHT = TILE_HEIGHT / TILE_SCALE;
         public Pixel[][] pixels = new Pixel[SCALED_WIDTH][SCALED_HEIGHT];
         public BufferedImage image;
 
@@ -250,4 +256,6 @@ public class Mosaic implements Runnable {
             return r + "." + g + "." + b;
         }
     }
+
+    
 }
