@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.imageio.ImageIO;
 
+
 public class Mosaic implements Runnable {
 
     private int IMG_COUNT;
@@ -26,7 +27,7 @@ public class Mosaic implements Runnable {
     private boolean IS_BW;
     private int THREADS;
     private ArrayList<Tile> reuseQueue = new ArrayList<Tile>();
-    private final int MAX_QUEUE_SIZE = 6;
+    private final int MAX_QUEUE_SIZE = 3;
     private int SCALED_WIDTH;
     private int SCALED_HEIGHT;
 
@@ -47,28 +48,38 @@ public class Mosaic implements Runnable {
         System.out.println(msg);
     }
 
-    public void resizeAndCropImage(String filename) throws IOException {
-        Runtime rt = Runtime.getRuntime();
-        BufferedImage currentImage = ImageIO.read(new File(filename));
-        int currentWidth           = currentImage.getWidth();
-        int currentHeight          = currentImage.getHeight();
-        Double ratioWidth  = currentWidth / 4.0;
-        Double ratioHeight = currentHeight / 3.0;
-        Double cropHeight;
-        Double cropWidth;
-        // TODO crop from the middle instead of top left corner
-        if (ratioWidth >= ratioHeight) { // Limiting dimension: height
-            cropHeight = Math.floor(ratioHeight) * 3;
-            cropWidth  = Math.floor(ratioHeight) * 4;
-        } else {                         // Limiting dimension: width
-            cropHeight = Math.floor(ratioWidth) * 3;
-            cropWidth  = Math.floor(ratioWidth) * 4;
-        }
-        Process pr = rt.exec("convert " + filename + " -crop " + Integer.toString(cropWidth.intValue()) + "x" + Integer.toString(cropHeight.intValue()) +
-         " /croppedImages/" + filename);
-        Process rsz = rt.exec("convert /croppedImages/" + filename + "-resize 320x240 /readyImages/" + filename);
+    //   public void resizeAndCropImage(String filename) throws IOException {
+    public void resizeAndCropImage(File tilesDir) throws IOException {
+        File[] files = tilesDir.listFiles();
+        int i=0;
+        for(File file : files) {
+            log("reading " + i);
+            javaxt.io.Image currentImage = new javaxt.io.Image(file);
+            if(file != null) {
+                int currentWidth = currentImage.getWidth();
+                int currentHeight = currentImage.getHeight();
+                log("got measurements");
+                Double ratioWidth = currentWidth / 4.0;
+                Double ratioHeight = currentHeight / 3.0;
+                // TODO crop from the middle instead of top left corner
+                if (ratioWidth >= ratioHeight) { // Limiting dimension: height
+                    currentImage.setHeight(240);
+                    currentImage.crop(((currentImage.getWidth() - 320)/2), 0, 320, 240);
+                } else {                         // Limiting dimension: width
+                    currentImage.setWidth(320);
+                    currentImage.crop(0, ((currentImage.getHeight() - 240)/2), 320, 240);
+                }
+                log("saving");
+                currentImage.saveAs("images/image" + i + ".jpg");
+                i++;
+                //if(i==150) break;
+            }
 
+        }
     }
+
+
+
     public void run() {
         log("Reading tiles...");
         try {
@@ -91,7 +102,7 @@ public class Mosaic implements Runnable {
                         outputImageParts.add(new BufferedImagePart(bestFitTile.image, inputImagePart.x, inputImagePart.y));
                     }
                 });
-            } 
+            }
             newFixedThreadPool.shutdown();
             newFixedThreadPool.awaitTermination(10000000, TimeUnit.SECONDS);
 
@@ -279,5 +290,5 @@ public class Mosaic implements Runnable {
         }
     }
 
-    
+
 }
