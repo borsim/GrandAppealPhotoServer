@@ -1,0 +1,12 @@
+{
+    "runtime": {
+        "majorVersion": "8"
+    },
+    "command": "java -jar gs-uploading-files-0.1.0.jar",
+    "release": {
+        "build": "150520.1154",
+        "commit": "d8c2596364d9584050461",
+        "version": "1.0"
+    },
+    "notes": "Picture upload REST Application using Spring Data REST"
+}
