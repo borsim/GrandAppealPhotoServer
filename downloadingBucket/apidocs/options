@@ -1,0 +1,67 @@
+-classpath
+'/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.0/jackson-datatype-jsr310-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/nimbusds/nimbus-jose-jwt/4.9/nimbus-jose-jwt-4.9.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-objectstorage/bmc-objectstorage-extensions/target/oci-java-sdk-objectstorage-extensions-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/bouncycastle/bcprov-jdk15on/1.52/bcprov-jdk15on-1.52.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.9.0/jackson-jaxrs-base-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/jersey/core/jersey-client/2.24.1/jersey-client-2.24.1.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/hk2/hk2-api/2.5.0-b05/hk2-api-2.5.0-b05.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/commons-io/commons-io/2.5/commons-io-2.5.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.9.0/jackson-jaxrs-json-provider-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-loadbalancer/target/oci-java-sdk-loadbalancer-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/jersey/core/jersey-common/2.24.1/jersey-common-2.24.1.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-core/target/oci-java-sdk-core-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.0/jackson-datatype-jdk8-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/hk2/hk2-locator/2.5.0-b05/hk2-locator-2.5.0-b05.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-common/target/oci-java-sdk-common-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/bouncycastle/bcpkix-jdk15on/1.52/bcpkix-jdk15on-1.52.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-identity/target/oci-java-sdk-identity-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/projectlombok/lombok/1.16.16/lombok-1.16.16.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/hk2/osgi-resource-locator/1.0.1/osgi-resource-locator-1.0.1.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/javassist/javassist/3.20.0-GA/javassist-3.20.0-GA.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/hk2/hk2-utils/2.5.0-b05/hk2-utils-2.5.0-b05.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/hk2/external/javax.inject/2.5.0-b05/javax.inject-2.5.0-b05.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/slf4j/slf4j-api/1.7.23/slf4j-api-1.7.23.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/google/guava/guava/19.0/guava-19.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.9.0/jackson-module-jaxb-annotations-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/core/jackson-core/2.9.0/jackson-core-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/hk2/external/aopalliance-repackaged/2.5.0-b05/aopalliance-repackaged-2.5.0-b05.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-objectstorage/bmc-objectstorage-combined/target/oci-java-sdk-objectstorage-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/commons-codec/commons-codec/1.10/commons-codec-1.10.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-objectstorage/bmc-objectstorage-generated/target/oci-java-sdk-objectstorage-generated-1.2.27.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-audit/target/oci-java-sdk-audit-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/fasterxml/jackson/core/jackson-databind/2.9.0/jackson-databind-2.9.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/net/minidev/json-smart/1.3.1/json-smart-1.3.1.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-database/target/oci-java-sdk-database-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/glassfish/jersey/bundles/repackaged/jersey-guava/2.24.1/jersey-guava-2.24.1.jar:/data/buildAgent/work/72c9afb9c89106ed/bmc-dns/target/oci-java-sdk-dns-1.2.27.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar'
+-doclet
+'ch.raffael.doclets.pegdown.PegdownDoclet'
+-docletpath
+'/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/ch/raffael/pegdown-doclet/pegdown-doclet/1.3/pegdown-doclet-1.3.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/ow2/asm/asm/5.0.3/asm-5.0.3.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/parboiled/parboiled-core/1.1.7/parboiled-core-1.1.7.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/spockframework/spock-core/1.0-groovy-2.4/spock-core-1.0-groovy-2.4.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/jsoup/jsoup/1.8.3/jsoup-1.8.3.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/pegdown/pegdown/1.6.0/pegdown-1.6.0.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/ow2/asm/asm-util/5.0.3/asm-util-5.0.3.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/codehaus/groovy/groovy-all/2.4.6/groovy-all-2.4.6.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/cglib/cglib-nodep/3.1/cglib-nodep-3.1.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/org/parboiled/parboiled-java/1.1.7/parboiled-java-1.1.7.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/net/sourceforge/plantuml/plantuml/8032/plantuml-8032.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/junit/junit/4.12/junit-4.12.jar:/data/buildAgent/system/jetbrains.maven.runner/maven.repo.local-bt2367/com/google/guava/guava/18.0/guava-18.0.jar'
+-encoding
+'UTF-8'
+-overview
+'/data/buildAgent/work/72c9afb9c89106ed/bmc-full/src/main/java/overview.html'
+-protected
+-sourcepath
+'/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-audit/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-common/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-core/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-database/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-dns/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-identity/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-loadbalancer/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-objectstorage/bmc-objectstorage-extensions/target/generated-sources-for-docs/delombok:/data/buildAgent/work/72c9afb9c89106ed/bmc-full/../bmc-objectstorage/bmc-objectstorage-generated/target/generated-sources-for-docs/delombok'
+-Xdoclint:none -disable-highlight
+-author
+-bottom
+'Copyright &#169; 2016&#x2013;2018. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/data/buildAgent/work/72c9afb9c89106ed/bmc-full/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Oracle Cloud Infrastructure Java SDK - 1.2.27'
+-group
+'Oracle BMCS Audit Service' 'com.oracle.bmc.audit*'
+-group
+'Oracle BMCS Core Services (Compute/Virtual Network/Block Storage)' 'com.oracle.bmc.core*'
+-group
+'Oracle BMCS Database Service' 'com.oracle.bmc.database*'
+-group
+'Oracle BMCS Identity Service' 'com.oracle.bmc.identity*'
+-group
+'Oracle BMCS Load Balancer Service' 'com.oracle.bmc.loadbalancer*'
+-group
+'Oracle BMCS Object Storage Service' 'com.oracle.bmc.objectstorage*'
+-group
+'Oracle BMCS Common Runtime' 'com.oracle.bmc*'
+-link
+'https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs'
+-link
+'https://jersey.java.net/apidocs/2.24.1/jersey'
+-link
+'http://google.github.io/guava/releases/19.0/api/docs'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' '/data/buildAgent/work/72c9afb9c89106ed/bmc-full/target/javadoc-bundle-options'
+-linkoffline
+'https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/javasdk.htm/apidocs' '/data/buildAgent/work/72c9afb9c89106ed/bmc-common/target/apidocs'
+-linkoffline
+'https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/javasdk.htm/apidocs' '/data/buildAgent/work/72c9afb9c89106ed/bmc-audit/target/apidocs'
+-linkoffline
+'https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/javasdk.htm/apidocs' '/data/buildAgent/work/72c9afb9c89106ed/bmc-core/target/apidocs'
+-linkoffline
+'https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/javasdk.htm/apidocs' '/data/buildAgent/work/72c9afb9c89106ed/bmc-database/target/apidocs'
+-linkoffline
+'https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/javasdk.htm/apidocs' '/data/buildAgent/work/72c9afb9c89106ed/bmc-dns/target/apidocs'
+-linkoffline
+'https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/javasdk.htm/apidocs' '/data/buildAgent/work/72c9afb9c89106ed/bmc-identity/target/apidocs'
+-linkoffline
+'https://docs.us-phoenix-1.oraclecloud.com/Content/API/SDKDocs/javasdk.htm/apidocs' '/data/buildAgent/work/72c9afb9c89106ed/bmc-loadbalancer/target/apidocs'
+-packagesheader
+'Oracle BMCS SDK'
+-use
+-version
+-windowtitle
+'Oracle Cloud Infrastructure Java SDK - 1.2.27'

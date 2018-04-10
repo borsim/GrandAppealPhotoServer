@@ -1,8 +1,11 @@
 package hello.objectStorage.src;
 
+import com.google.common.base.Supplier;
+import com.oracle.bmc.ConfigFileReader;
 import com.oracle.bmc.Region;
 import com.oracle.bmc.auth.AuthenticationDetailsProvider;
 import com.oracle.bmc.auth.ConfigFileAuthenticationDetailsProvider;
+import com.oracle.bmc.auth.SimpleAuthenticationDetailsProvider;
 import com.oracle.bmc.objectstorage.ObjectStorage;
 import com.oracle.bmc.objectstorage.ObjectStorageClient;
 import com.oracle.bmc.objectstorage.requests.GetObjectRequest;
@@ -15,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
 /*
     Most code from https://github.com/oracle/oci-java-sdk/blob/master/bmc-examples/src/main/java/UploadObjectExample.java
  */
@@ -30,9 +32,24 @@ public class TestObjectStorage {
         // * https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/sdkconfig.htm
         // * https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#How
 
-        AuthenticationDetailsProvider provider =
-                new ConfigFileAuthenticationDetailsProvider("/Users/Rudy/Desktop/CS/2nd Year/SPE/complete/config", "DEFAULT");
+        Supplier<InputStream> privateKeySupplier = new Supplier<InputStream>() {
+            @Override
+            public InputStream get() {
+                return TestObjectStorage.class.getClassLoader().getResourceAsStream("oci_api_key.pem");
+            }
+        };
 
+        InputStream configFileInputStream = TestObjectStorage.class.getClassLoader().getResourceAsStream("oci_config");
+        ConfigFileReader.ConfigFile config = ConfigFileReader.parse(configFileInputStream, "DEFAULT");
+
+        AuthenticationDetailsProvider provider =
+                SimpleAuthenticationDetailsProvider.builder()
+                        .tenantId(config.get("tenancy"))
+                        .userId(config.get("user"))
+                        .fingerprint(config.get("fingerprint"))
+                        .passPhrase(config.get("pass_phrase"))
+                        .privateKeySupplier(privateKeySupplier)
+                        .build();
 
         ObjectStorage client = new ObjectStorageClient(provider);
         client.setRegion(Region.US_ASHBURN_1);

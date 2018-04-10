@@ -1,0 +1,35 @@
+ARTHUR:  Whoa there!
+      [clop clop]
+
+  GUARD #1:  Halt!  Who goes there?
+  ARTHUR:  It is I, Arthur, son of Uther Pendragon, from the castle
+      of Camelot.  King of the Britons, defeator of the Saxons, sovereign
+      of all England!
+  GUARD #1:  Pull the other one!
+  ARTHUR:  I am.  And this my trusty servant Patsy.
+      We have ridden the length and breadth of the land in search of knights
+      who will join me in my court of Camelot.  I must speak with your lord
+      and master.
+  GUARD #1:  What, ridden on a horse?
+  ARTHUR:  Yes!
+  GUARD #1:  You're using coconuts!
+  ARTHUR:  What?
+  GUARD #1:  You've got two empty halves of coconut and you're bangin'
+      'em together.
+  ARTHUR:  So?  We have ridden since the snows of winter covered this
+      land, through the kingdom of Mercea, through--
+  GUARD #1:  Where'd you get the coconut?
+  ARTHUR:  We found them.
+  GUARD #1:  Found them?  In Mercea?  The coconut's tropical!
+  ARTHUR:  What do you mean?
+  GUARD #1:  Well, this is a temperate zone.
+  ARTHUR:  The swallow may fly south with the sun or the house martin
+      or the plumber may seek warmer climes in winter yet these are not
+      strangers to our land.
+  GUARD #1:  Are you suggesting coconuts migrate?
+  ARTHUR:  Not at all, they could be carried.
+  GUARD #1:  What -- a swallow carrying a coconut?
+  ARTHUR:  It could grip it by the husk!
+  GUARD #1:  It's not a question of where he grips it!  It's a simple
+      question of weight ratios!  A five ounce bird could not carry a 1 pound
+      coconut.

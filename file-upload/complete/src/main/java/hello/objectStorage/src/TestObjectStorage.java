@@ -30,7 +30,7 @@ public class TestObjectStorage {
         // * https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm#How
 
         AuthenticationDetailsProvider provider =
-                new ConfigFileAuthenticationDetailsProvider("/Users/Rudy/Documents/GitHub/GrandAppealPhotoServer/file-upload/complete/config", "DEFAULT");
+                new ConfigFileAuthenticationDetailsProvider("~/.oci/config", "DEFAULT");
 
 
         ObjectStorage client = new ObjectStorageClient(provider);
