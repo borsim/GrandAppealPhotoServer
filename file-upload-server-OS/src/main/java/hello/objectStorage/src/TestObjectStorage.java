@@ -13,12 +13,11 @@ import com.oracle.bmc.objectstorage.requests.PutObjectRequest;
 import com.oracle.bmc.objectstorage.responses.GetObjectResponse;
 import com.oracle.bmc.objectstorage.transfer.UploadConfiguration;
 import com.oracle.bmc.objectstorage.transfer.UploadManager;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-
-
 /*
     Most code from https://github.com/oracle/oci-java-sdk/blob/master/bmc-examples/src/main/java/UploadObjectExample.java
  */
@@ -63,7 +62,7 @@ public class TestObjectStorage {
 
         UploadManager uploadManager = new UploadManager(client, uploadConfiguration);
 
-        String bucketName = "statuePics"; // You need to create this in the OCI console first.
+        String bucketName = "test"; // You need to create this in the OCI console first.
         String namespaceName = "specloud95"; // This is the Cloud Account Name that you use before sign in.
 
         String contentType = "image/jpeg";
