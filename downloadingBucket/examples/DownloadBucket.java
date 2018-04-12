@@ -68,7 +68,7 @@ public class DownloadBucket implements Runnable {
              Integer count = new Integer(0);
              //running some command line to create folder for downloaded images
              Runtime rt = Runtime.getRuntime();
-             Process pr1 = rt.exec("cd /Users/Sam/Documents/Uni/SecondYear/SPE/objectStorage/downloadingBucket/");
+             Process pr1 = rt.exec("cd /Users/Rachel/Documents/downloadingBucket/");
              Process pr2 = rt.exec("mkdir photos");
              
              //going through each file on OS in turn and downloading it
@@ -93,7 +93,7 @@ public class DownloadBucket implements Runnable {
                  	//making a host file
                      Process pr3 = rt.exec("touch " + filename + ".jpg");
                      //downloading image
-                     OutputStream os = new FileOutputStream(new File("/Users/Sam/Documents/Uni/SecondYear/SPE/objectStorage/downloadingBucket/photos/" + filename + ".jpg"));
+                     OutputStream os = new FileOutputStream(new File("/Users/Rachel/Documents/downloadingBucket/photos/" + filename + ".jpg"));
                      //ensuring next filename is unique
                      count++;
                      

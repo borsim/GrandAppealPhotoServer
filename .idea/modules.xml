@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GrandAppealPhotoServer.iml" filepath="$PROJECT_DIR$/.idea/GrandAppealPhotoServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GrandAppealPhotoServer.iml" filepath="$PROJECT_DIR$/GrandAppealPhotoServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WorkingOSUpload/WorkingOSUpload.iml" filepath="$PROJECT_DIR$/WorkingOSUpload/WorkingOSUpload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/downloadingBucket/downloadingBucket.iml" filepath="$PROJECT_DIR$/downloadingBucket/downloadingBucket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/file-upload-server-OS/src/main/main.iml" filepath="$PROJECT_DIR$/file-upload-server-OS/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/file-upload/complete/src/main/main1.iml" filepath="$PROJECT_DIR$/file-upload/complete/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uploadApp/src/main/main2.iml" filepath="$PROJECT_DIR$/uploadApp/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-service/src/main/main3.iml" filepath="$PROJECT_DIR$/book-service/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/downloadApp/src/main/main4.iml" filepath="$PROJECT_DIR$/downloadApp/src/main/main4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mosaic-alpha/mosaic-alpha.iml" filepath="$PROJECT_DIR$/mosaic-alpha/mosaic-alpha.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mosaiccreator/mosaic3/mosaic3.iml" filepath="$PROJECT_DIR$/mosaiccreator/mosaic3/mosaic3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/file-upload-server-OS/src/test/test.iml" filepath="$PROJECT_DIR$/file-upload-server-OS/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/file-upload/complete/src/test/test1.iml" filepath="$PROJECT_DIR$/file-upload/complete/src/test/test1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/book-service/src/test/test2.iml" filepath="$PROJECT_DIR$/book-service/src/test/test2.iml" />
     </modules>
   </component>
 </project>
