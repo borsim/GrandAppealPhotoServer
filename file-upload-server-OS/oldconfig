@@ -1,0 +1,6 @@
+[DEFAULT]
+user=ocid1.user.oc1..aaaaaaaajdbtx7q2ucghglfdopgfysgsmqw4bv4lq665f4u66lzivcqfeq5q
+tenancy=ocid1.tenancy.oc1..aaaaaaaaonpm3riwgajhwfgl5aqylyvmzytztamvubq7lfvdsmu7v5tmqmcq
+pass_phrase=pass
+fingerprint=1c:85:09:7a:67:58:75:d6:87:fc:32:dc:93:c6:dc:0a
+region=us-ashburn-1
