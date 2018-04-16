@@ -114,7 +114,7 @@ public class Download {
                 String filename = count.toString();
 
                 //save image
-                OutputStream os = new FileOutputStream(new File("/Users/rachelkirby/Documents/GrandAppealPhotoServer/toVerify/" + filename + ".jpg"));
+                OutputStream os = new FileOutputStream(new File("toVerify/" + filename + ".jpg"));
                 //ensure next filename is unique
                 count++;
 
