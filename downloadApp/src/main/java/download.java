@@ -34,6 +34,7 @@ import java.io.OutputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /*
     Most code from https://github.com/oracle/oci-java-sdk/blob/master/bmc-examples/src/main/java/UploadObjectExample.java
@@ -138,6 +139,7 @@ public class Download {
                                 .build();
 
                 client.deleteObject(deleteReq);
+                JOptionPane.showMessageDialog(null, "Done!");
 
             } catch (IOException e) {
                 e.printStackTrace();
