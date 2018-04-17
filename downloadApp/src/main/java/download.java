@@ -112,7 +112,7 @@ public class Download {
             //save object to host file
             try {
                 InputStream is = response.getInputStream();
-                String filename = count.toString();
+                String filename = name;
 
                 //save image
                 OutputStream os = new FileOutputStream(new File("toVerify/" + filename + ".jpg"));
@@ -139,11 +139,14 @@ public class Download {
                                 .build();
 
                 client.deleteObject(deleteReq);
-                JOptionPane.showMessageDialog(null, "Done!");
+                
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            
         }
+        JOptionPane.showMessageDialog(null, "Done!");
     }
 }
