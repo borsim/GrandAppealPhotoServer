@@ -76,7 +76,7 @@ public class Download {
         // list objects in bucket
         ListObjectsRequest requestList =
                 ListObjectsRequest.builder()
-                        .bucketName("downloadTest")
+                        .bucketName("uploaded")
                         .namespaceName(namespaceName)
                         .build();
 
@@ -90,7 +90,7 @@ public class Download {
             imageCount++;
             System.out.println("Found image: " + image.getName());
             fileNames.add(image.getName());
-            if(imageCount == 5) { break; }
+            if(imageCount == 50) { break; }
         }
 
         //variable to make unique names for downloaded images
