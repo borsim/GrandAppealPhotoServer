@@ -101,7 +101,7 @@ public class Download {
             //create request for object
             GetObjectRequest request =
                     GetObjectRequest.builder()
-                            .bucketName("downloadTest")
+                            .bucketName("uploaded")
                             .namespaceName(namespaceName)
                             .objectName(name)
                             .build();
@@ -133,7 +133,7 @@ public class Download {
                 //delete object from OS bucket
                 DeleteObjectRequest deleteReq =
                         DeleteObjectRequest.builder()
-                                .bucketName("downloadTest")
+                                .bucketName("uploaded")
                                 .namespaceName(namespaceName)
                                 .objectName(name)
                                 .build();
